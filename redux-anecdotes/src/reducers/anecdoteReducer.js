@@ -30,14 +30,23 @@ const reducer = (state = initialState, action) => {
           votes: anecdote.votes + 1
         }
         : anecdote)
+    case 'ANECDOTES-ADD':
+      return state.concat(action.data)
     default: return state
   }
 }
 
 export const voteAnecdote = (id) => {
-  return{
-    type:'ANECDOTES-VOTE',
-    data:{id}
+  return {
+    type: 'ANECDOTES-VOTE',
+    data: { id }
+  }
+}
+
+export const createAnecdote = (anecdote) => {
+  return {
+    type: 'ANECDOTES-ADD',
+    data: asObject(anecdote)
   }
 }
 
