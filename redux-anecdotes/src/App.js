@@ -1,4 +1,3 @@
-import { useSelector, useDispatch } from 'react-redux'
 import AnecdoteList from './components/AnecdoteList'
 import AnecdoteForm from './components/AnecdoteForm'
 
