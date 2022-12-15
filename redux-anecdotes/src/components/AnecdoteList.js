@@ -5,26 +5,27 @@ import { showNotification } from '../reducers/notificationReducer'
 let timeOutHandle;
 
 const AnecdoteList = () => {
-    const anecdotes = useSelector(reducer => [...reducer.anecdotes].sort((a, b) => b.votes - a.votes))
+    const anecdotes = useSelector(({ anecdotes, filter }) => {
+        const filterAnecdotes = anecdotes.filter(anecdote => anecdote.content.toLowerCase().includes(filter.toLowerCase()))
+        return [...filterAnecdotes].sort((a, b) => b.votes - a.votes)
+    })
+
     const dispatch = useDispatch()
 
-
-    const voteClickHandler = (anecdote)=>{
+    const voteClickHandler = (anecdote) => {
         dispatch(voteAnecdote(anecdote.id))
         notificationVoted(anecdote.content)
-    }  
-    
-    const notificationVoted=(content)=>{
+    }
+
+    const notificationVoted = (content) => {
         dispatch(showNotification(`voted '${content}'`))
-        
+
         window.clearTimeout(timeOutHandle)
 
         timeOutHandle = window.setTimeout(() => {
             dispatch(showNotification(''))
         }, 5000);
     }
-
-
 
     return (
         <>
