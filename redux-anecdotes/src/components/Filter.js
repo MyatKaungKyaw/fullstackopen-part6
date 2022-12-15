@@ -8,7 +8,6 @@ const Filter = () => {
     const handleChange = (event) => {
         const filter = event.target.value
         dispatch(changeFilter(filter))
-        console.log(event.target.value)
     }
     const style = {
         marginBottom: 10
