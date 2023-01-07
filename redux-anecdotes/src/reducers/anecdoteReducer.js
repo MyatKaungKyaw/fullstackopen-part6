@@ -28,7 +28,7 @@ const anecdoteSlice = createSlice({
         : anecdote)
     },
     createAnecdote(state, action) {
-      return state.concat(asObject(action.payload))
+      return state.concat(action.payload)
     },
     setAnecdote(state,action){
       return action.payload
