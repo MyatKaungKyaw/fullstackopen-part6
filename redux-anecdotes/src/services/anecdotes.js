@@ -18,7 +18,6 @@ const createAnecdote = async (content) => {
 
 const modifyAencdote = async anecdote => {
     const res = await axios.put(`${baseUrl}/${anecdote.id}`, anecdote)
-    console.log(res.data)
     return res.data
 }
 
